@@ -2,6 +2,7 @@ import type { BoxProps } from '../../ui/box/box.d';
 import {
   IconColor,
   IconName,
+  IconSize,
   Size,
 } from '../../../helpers/constants/design-system';
 
@@ -48,5 +49,5 @@ export interface ButtonIconProps extends BoxProps {
    * The size of the ButtonIcon.
    * Possible values could be 'Size.SM' 24px, 'Size.LG' 32px,
    */
-  size?: ButtonIconSize | Size;
+  size?: ButtonIconSize | Size | IconSize;
 }

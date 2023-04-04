@@ -29,13 +29,13 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       iconProps,
       ...props
     },
-    ref: Ref<HTMLDivElement>,
+    ref: Ref<HTMLElement>,
   ) => {
     const Tag = href ? 'a' : as;
     return (
       <Box
         aria-label={ariaLabel}
-        as={Tag}
+        as={String(Tag)}
         className={classnames(
           'mm-button-icon',
           `mm-button-icon--size-${size}`,
