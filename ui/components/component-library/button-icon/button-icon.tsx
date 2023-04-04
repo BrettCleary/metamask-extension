@@ -15,7 +15,7 @@ import { Icon } from '../icon';
 
 import { ButtonIconSize, ButtonIconProps } from './button-icon.types';
 
-export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
+export const ButtonIcon = React.forwardRef(
   (
     {
       ariaLabel,
@@ -28,14 +28,14 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       disabled,
       iconProps,
       ...props
-    },
+    }: ButtonIconProps,
     ref: Ref<HTMLElement>,
   ) => {
     const Tag = href ? 'a' : as;
     return (
       <Box
         aria-label={ariaLabel}
-        as={String(Tag)}
+        as={Tag}
         className={classnames(
           'mm-button-icon',
           `mm-button-icon--size-${size}`,

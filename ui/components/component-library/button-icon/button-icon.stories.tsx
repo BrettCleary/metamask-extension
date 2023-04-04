@@ -1,14 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import {
-  AlignItems,
-  Color,
-  DISPLAY,
-  FLEX_DIRECTION,
-  Size,
-} from '../../../helpers/constants/design-system';
-import Box from '../../ui/box/box';
-import { ICON_NAMES } from '../icon';
+import { Color } from '../../../helpers/constants/design-system';
+import { IconName } from '..';
 import { ButtonIconSize } from './button-icon.types';
 import { ButtonIcon } from './button-icon';
 import README from './README.mdx';
@@ -22,24 +15,6 @@ export default {
       page: README,
     },
   },
-  argTypes: {
-    as: {
-      control: 'select',
-      options: ['button', 'a'],
-    },
-    color: {
-      control: 'select',
-      options: Object.values(Color),
-    },
-    iconName: {
-      control: 'select',
-      options: Object.values(ICON_NAMES),
-    },
-    size: {
-      control: 'select',
-      options: Object.values(ButtonIconSize),
-    },
-  },
 } as ComponentMeta<typeof ButtonIcon>;
 
 const Template: ComponentStory<typeof ButtonIcon> = (args) => (
@@ -49,42 +24,39 @@ const Template: ComponentStory<typeof ButtonIcon> = (args) => (
 export const DefaultStory = Template.bind({});
 
 DefaultStory.args = {
-  iconName: ICON_NAMES.CLOSE,
+  iconName: IconName.Close,
   ariaLabel: 'Close',
 };
 
 DefaultStory.storyName = 'Default';
 
-export const IconName: ComponentStory<typeof ButtonIcon> = (args) => (
+export const IconNameStory: ComponentStory<typeof ButtonIcon> = (args) => (
   <ButtonIcon {...args} />
 );
 
-IconName.args = {
-  iconName: ICON_NAMES.CLOSE,
+IconNameStory.args = {
+  iconName: IconName.Close,
   ariaLabel: 'Close',
 };
 
+IconNameStory.storyName = 'IconName';
+
 export const SizeStory: ComponentStory<typeof ButtonIcon> = (args) => (
-  <Box
-    display={DISPLAY.FLEX}
-    alignItems={AlignItems.baseline}
-    gap={1}
-    marginBottom={2}
-  >
+  <>
     <ButtonIcon
       {...args}
-      size={Size.SM}
-      iconName={ICON_NAMES.CLOSE}
+      size={ButtonIconSize.SM}
+      iconName={IconName.Close}
       ariaLabel="Close"
     />
     <ButtonIcon
       {...args}
-      size={Size.LG}
+      size={ButtonIconSize.LG}
       color={Color.primaryDefault}
-      iconName={ICON_NAMES.CLOSE}
+      iconName={IconName.Close}
       ariaLabel="Close"
     />
-  </Box>
+  </>
 );
 
 SizeStory.storyName = 'Size';
@@ -93,7 +65,7 @@ export const AriaLabel: ComponentStory<typeof ButtonIcon> = (args) => (
   <>
     <ButtonIcon
       as="button"
-      iconName={ICON_NAMES.CLOSE}
+      iconName={IconName.Close}
       ariaLabel="Close"
       {...args}
     />
@@ -102,7 +74,7 @@ export const AriaLabel: ComponentStory<typeof ButtonIcon> = (args) => (
       href="https://metamask.io/"
       target="_blank"
       color={Color.primaryDefault}
-      iconName={ICON_NAMES.EXPORT}
+      iconName={IconName.Export}
       ariaLabel="Visit MetaMask.io"
       {...args}
     />
@@ -110,21 +82,21 @@ export const AriaLabel: ComponentStory<typeof ButtonIcon> = (args) => (
 );
 
 export const As: ComponentStory<typeof ButtonIcon> = (args) => (
-  <Box display={DISPLAY.FLEX} flexDirection={FLEX_DIRECTION.ROW} gap={2}>
-    <ButtonIcon {...args} iconName={ICON_NAMES.CLOSE} ariaLabel="close" />
+  <>
+    <ButtonIcon {...args} iconName={IconName.Close} ariaLabel="close" />
     <ButtonIcon
       as="a"
       href="#"
       {...args}
       color={Color.primaryDefault}
-      iconName={ICON_NAMES.EXPORT}
+      iconName={IconName.Export}
       ariaLabel="demo"
     />
-  </Box>
+  </>
 );
 
 export const Href: ComponentStory<typeof ButtonIcon> = (args) => (
-  <ButtonIcon iconName={ICON_NAMES.EXPORT} {...args} target="_blank" />
+  <ButtonIcon iconName={IconName.Export} {...args} target="_blank" />
 );
 
 Href.args = {
@@ -134,7 +106,7 @@ Href.args = {
 };
 
 export const ColorStory: ComponentStory<typeof ButtonIcon> = (args) => (
-  <ButtonIcon {...args} iconName={ICON_NAMES.CLOSE} ariaLabel="close" />
+  <ButtonIcon {...args} iconName={IconName.Close} ariaLabel="close" />
 );
 ColorStory.storyName = 'Color';
 
@@ -143,7 +115,7 @@ ColorStory.args = {
 };
 
 export const Disabled: ComponentStory<typeof ButtonIcon> = (args) => (
-  <ButtonIcon {...args} iconName={ICON_NAMES.CLOSE} ariaLabel="close" />
+  <ButtonIcon {...args} iconName={IconName.Close} ariaLabel="close" />
 );
 
 Disabled.args = {

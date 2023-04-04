@@ -1,8 +1,8 @@
 import type { BoxProps } from '../../ui/box/box.d';
+import { IconName, IconSize } from '..';
 import {
+  Color,
   IconColor,
-  IconName,
-  IconSize,
   Size,
 } from '../../../helpers/constants/design-system';
 
@@ -28,7 +28,7 @@ export interface ButtonIconProps extends BoxProps {
    * The color of the ButtonIcon component should use the IconColor object from
    * ./ui/helpers/constants/design-system.js
    */
-  color?: IconColor;
+  color?: IconColor | Color;
   /**
    * Boolean to disable button
    */
