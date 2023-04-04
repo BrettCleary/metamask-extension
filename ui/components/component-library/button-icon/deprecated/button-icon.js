@@ -10,10 +10,10 @@ import {
   IconColor,
   JustifyContent,
   Size,
-} from '../../../helpers/constants/design-system';
+} from '../../../../helpers/constants/design-system';
 
-import Box from '../../ui/box';
-import { Icon, ICON_NAMES } from '../icon/deprecated';
+import Box from '../../../ui/box';
+import { Icon, ICON_NAMES } from '../../icon/deprecated';
 
 import { BUTTON_ICON_SIZES } from './button-icon.constants';
 

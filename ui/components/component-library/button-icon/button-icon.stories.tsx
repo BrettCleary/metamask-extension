@@ -1,4 +1,5 @@
 import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
   AlignItems,
   Color,
@@ -7,28 +8,10 @@ import {
   Size,
 } from '../../../helpers/constants/design-system';
 import Box from '../../ui/box/box';
-import { ICON_NAMES } from '../icon/deprecated';
-import { BUTTON_ICON_SIZES } from './button-icon.constants';
+import { ICON_NAMES } from '../icon';
+import { ButtonIconSize } from './button-icon.types';
 import { ButtonIcon } from './button-icon';
 import README from './README.mdx';
-
-const marginSizeControlOptions = [
-  undefined,
-  0,
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  'auto',
-];
 
 export default {
   title: 'Components/ComponentLibrary/ButtonIcon',
@@ -40,25 +23,13 @@ export default {
     },
   },
   argTypes: {
-    ariaLabel: {
-      control: 'text',
-    },
     as: {
       control: 'select',
       options: ['button', 'a'],
     },
-    className: {
-      control: 'text',
-    },
     color: {
       control: 'select',
       options: Object.values(Color),
-    },
-    disabled: {
-      control: 'boolean',
-    },
-    href: {
-      control: 'text',
     },
     iconName: {
       control: 'select',
@@ -66,32 +37,16 @@ export default {
     },
     size: {
       control: 'select',
-      options: Object.values(BUTTON_ICON_SIZES),
-    },
-    marginTop: {
-      options: marginSizeControlOptions,
-      control: 'select',
-      table: { category: 'box props' },
-    },
-    marginRight: {
-      options: marginSizeControlOptions,
-      control: 'select',
-      table: { category: 'box props' },
-    },
-    marginBottom: {
-      options: marginSizeControlOptions,
-      control: 'select',
-      table: { category: 'box props' },
-    },
-    marginLeft: {
-      options: marginSizeControlOptions,
-      control: 'select',
-      table: { category: 'box props' },
+      options: Object.values(ButtonIconSize),
     },
   },
-};
+} as ComponentMeta<typeof ButtonIcon>;
 
-export const DefaultStory = (args) => <ButtonIcon {...args} />;
+const Template: ComponentStory<typeof ButtonIcon> = (args) => (
+  <ButtonIcon {...args} />
+);
+
+export const DefaultStory = Template.bind({});
 
 DefaultStory.args = {
   iconName: ICON_NAMES.CLOSE,
@@ -100,14 +55,16 @@ DefaultStory.args = {
 
 DefaultStory.storyName = 'Default';
 
-export const IconName = (args) => <ButtonIcon {...args} />;
+export const IconName: ComponentStory<typeof ButtonIcon> = (args) => (
+  <ButtonIcon {...args} />
+);
 
 IconName.args = {
   iconName: ICON_NAMES.CLOSE,
   ariaLabel: 'Close',
 };
 
-export const SizeStory = (args) => (
+export const SizeStory: ComponentStory<typeof ButtonIcon> = (args) => (
   <Box
     display={DISPLAY.FLEX}
     alignItems={AlignItems.baseline}
@@ -132,7 +89,7 @@ export const SizeStory = (args) => (
 
 SizeStory.storyName = 'Size';
 
-export const AriaLabel = (args) => (
+export const AriaLabel: ComponentStory<typeof ButtonIcon> = (args) => (
   <>
     <ButtonIcon
       as="button"
@@ -152,7 +109,7 @@ export const AriaLabel = (args) => (
   </>
 );
 
-export const As = (args) => (
+export const As: ComponentStory<typeof ButtonIcon> = (args) => (
   <Box display={DISPLAY.FLEX} flexDirection={FLEX_DIRECTION.ROW} gap={2}>
     <ButtonIcon {...args} iconName={ICON_NAMES.CLOSE} ariaLabel="close" />
     <ButtonIcon
@@ -166,7 +123,7 @@ export const As = (args) => (
   </Box>
 );
 
-export const Href = (args) => (
+export const Href: ComponentStory<typeof ButtonIcon> = (args) => (
   <ButtonIcon iconName={ICON_NAMES.EXPORT} {...args} target="_blank" />
 );
 
@@ -176,7 +133,7 @@ Href.args = {
   color: Color.primaryDefault,
 };
 
-export const ColorStory = (args) => (
+export const ColorStory: ComponentStory<typeof ButtonIcon> = (args) => (
   <ButtonIcon {...args} iconName={ICON_NAMES.CLOSE} ariaLabel="close" />
 );
 ColorStory.storyName = 'Color';
@@ -185,7 +142,7 @@ ColorStory.args = {
   color: Color.primaryDefault,
 };
 
-export const Disabled = (args) => (
+export const Disabled: ComponentStory<typeof ButtonIcon> = (args) => (
   <ButtonIcon {...args} iconName={ICON_NAMES.CLOSE} ariaLabel="close" />
 );
 
